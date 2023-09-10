@@ -1,6 +1,3 @@
-
-import os
-
 from dotenv import load_dotenv
 import discord
 
@@ -13,9 +10,9 @@ from src.server import keep_alive
 
 load_dotenv()
 
-models = OpenAIModel(api_key=os.getenv('OPENAI_API'), model_engine=os.getenv('OPENAI_MODEL_ENGINE'))
+models = OpenAIModel(api_key='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', model_engine='gpt-3.5-turbo')
 
-memory = Memory(system_message=os.getenv('SYSTEM_MESSAGE'))
+memory = Memory(system_message='不要回复超过200个字符，用中文回答，你要帮助人')
 chatgpt = ChatGPT(models, memory)
 dalle = DALLE(models)
 
@@ -53,7 +50,7 @@ def run():
             logger.error(f"Error resetting memory: {e}")
             await interaction.followup.send('> Oops! Something went wrong. <')
 
-    client.run(os.getenv('DISCORD_TOKEN'))
+    client.run('MTA5NjY3NjI5NDMwNzA5NDU1OA.GcKbYF.6u1ylDjcXNIVHHjvjGbvaKhH9HWj_5zw3l7zXo')
 
 
 if __name__ == '__main__':
